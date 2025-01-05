@@ -13,7 +13,7 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 contract NASICOIN is ERC20, Ownable {
     // Constants
     uint256 public constant FISH_DECIMALS = 1000; // 1 NASIC = 1000 FISH
-    uint256 public constant INITIAL_SUPPLY = 2 * 10**18; // 2 NASIC
+    uint256 public constant INITIAL_SUPPLY = 2 * 10**3; // 2 NASIC
 
     // State variables
     address public developer; // Address of the developer
@@ -23,10 +23,12 @@ contract NASICOIN is ERC20, Ownable {
     uint256 public ownerChangeRequestTime;
     uint256 public developerChangeRequestTime;
 
-    uint256 private constant CHANGE_REQUEST_DELAY = 90 days; // 3 months
+    //uint256 private constant CHANGE_REQUEST_DELAY = 90 days; // 3 months
+    uint256 private constant CHANGE_REQUEST_DELAY = 3 minutes; // 3 minutes
 
     // Events
     event DeveloperChanged(address indexed oldDeveloper, address indexed newDeveloper);
+
     event OwnerChangeRequested(address indexed requester, address indexed newOwner);
     event DeveloperChangeRequested(address indexed requester, address indexed newDeveloper);
     event OwnerChangeCanceled(address indexed currentOwner);
