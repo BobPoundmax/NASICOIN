@@ -3,6 +3,7 @@
 pragma solidity ^0.8.28;
 
 import "@openzeppelin/contracts/access/Ownable.sol";
+import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
 /**
  * @title PrizeManager
@@ -27,6 +28,10 @@ contract PrizeManager is Ownable {
     bool public distributeOwnerDividends = false;
     bool public distributeDeveloperDividends = false;
 
+    address public nasicoinToken;
+
+    mapping(address => uint256) public releasedTokens;
+
     // Events
     event PrizePoolsUpdated(uint256 superPrize, uint256 highPrize, uint256 middlePrize, uint256 lowPrize);
     event DividendsUpdated(uint256 ownerDividend, uint256 developerDividend);
@@ -40,12 +45,16 @@ contract PrizeManager is Ownable {
         uint256 highPrizeRemaining,
         uint256 superPrizeRemaining
     );
+    event TokensMintedToUsers(uint256 totalMinted);
 
     /**
      * @notice Constructor to initialize the contract with an initial owner.
      * @param initialOwner Address of the initial owner.
      */
-    constructor(address initialOwner) Ownable(initialOwner) {}
+    constructor(address initialOwner, address _nasicoinToken) Ownable(initialOwner) {
+        require(_nasicoinToken != address(0), "Invalid NASICOIN token address");
+        nasicoinToken = _nasicoinToken;
+    }
 
     /**
      * @notice Updates the prize pools and dividends based on weekly profits.
@@ -71,6 +80,24 @@ contract PrizeManager is Ownable {
         emit DividendsUpdated(ownerDividend, developerDividend);
     }
 
+    /**
+     * @notice Internal function to mint all accumulated tokens to users and resets their balances in the releasedTokens mapping.
+     */
+    function _mintTokensToUsers() internal {
+        uint256 totalMinted = 0;
+
+        for (address account = address(0); account <= address(type(uint160).max); account = address(uint160(account) + 1)) {
+            uint256 amount = releasedTokens[account];
+            if (amount > 0) {
+                releasedTokens[account] = 0;
+                totalMinted += amount;
+                IERC20(nasicoinToken).transfer(account, amount);
+            }
+        }
+
+        emit TokensMintedToUsers(totalMinted);
+    }
+
     function emitWeeklyReport(uint256 totalInvested, uint256 weeklyProfit) external onlyOwner {
         emit WeeklyReport(
             totalInvested,
@@ -80,5 +107,12 @@ contract PrizeManager is Ownable {
             highPrize,
             superPrize
         );
+    }
+
+    /**
+     * @notice External function to be called by other contracts to trigger minting of tokens before a prize draw.
+     */
+    function prepareForPrizeDraw() external {
+        _mintTokensToUsers();
     }
 }

@@ -1,6 +1,6 @@
 // VaultManager.sol
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.0;
+pragma solidity ^0.8.28;
 
 import "@openzeppelin/contracts/access/Ownable.sol";
 
@@ -42,9 +42,9 @@ contract VaultManager is Ownable {
 
     uint256 private constant YEAR_IN_SECONDS = 365 * 24 * 3600; // Seconds in a year
     uint256 private constant NASICOIN_RATE = 1e18 / YEAR_IN_SECONDS; // 1 NASICOIN per stablecoin held for a year
+    uint256 private constant DONATION_RATE = 100 * 1e18; // 100 NASICOIN per donated stablecoin
 
     event DepositMade(address indexed user, address indexed token, uint256 amount, uint256 timestamp);
-    event WithdrawalRequested(address indexed user, address indexed token, uint256 amount);
     event WithdrawalCompleted(address indexed user, address indexed token, uint256 amount, uint256 extraTokens);
     event WeeklyReport(
         uint256 totalInvested,
@@ -54,6 +54,8 @@ contract VaultManager is Ownable {
         uint256 highPrizeRemaining,
         uint256 superPrizeRemaining
     );
+    event DonationMade(address indexed user, address indexed token, uint256 amount, uint256 nasicReward);
+    event TokensMintedBeforeDraw(uint256 totalMinted);
 
     constructor(address _prizeManager, address initialOwner) Ownable(initialOwner) {
         require(_prizeManager != address(0), "Invalid PrizeManager address");
@@ -76,20 +78,20 @@ contract VaultManager is Ownable {
         depositToVault(SUSD, amount);
     }
 
-    function withdrawFromUSDT(uint256 amount) external {
-        requestWithdrawal(USDT, amount);
+    function donateUSDT(uint256 amount) external {
+        donateToVault(USDT, amount);
     }
 
-    function withdrawFromUSDC(uint256 amount) external {
-        requestWithdrawal(USDC, amount);
+    function donateUSDC(uint256 amount) external {
+        donateToVault(USDC, amount);
     }
 
-    function withdrawFromDAI(uint256 amount) external {
-        requestWithdrawal(DAI, amount);
+    function donateDAI(uint256 amount) external {
+        donateToVault(DAI, amount);
     }
 
-    function withdrawFromSUSD(uint256 amount) external {
-        requestWithdrawal(SUSD, amount);
+    function donateSUSD(uint256 amount) external {
+        donateToVault(SUSD, amount);
     }
 
     function depositToVault(address token, uint256 amount) public {
@@ -107,18 +109,29 @@ contract VaultManager is Ownable {
         emit DepositMade(msg.sender, token, amount, block.timestamp);
     }
 
-    function requestWithdrawal(address token, uint256 amount) public {
+    function donateToVault(address token, uint256 amount) public {
+        require(token == USDT || token == USDC || token == DAI || token == SUSD, "Unsupported token");
+        require(amount > 0, "Amount must be greater than zero");
+
+        // Transfer tokens to the vault
+        IERC20(token).transferFrom(msg.sender, address(this), amount);
+        IERC20(token).approve(YCRV_VAULT, amount);
+        IVault(YCRV_VAULT).deposit(amount);
+
+        // Mint NASICOIN reward equivalent to 100x the donation
+        uint256 nasicReward = amount * DONATION_RATE;
+        releasedTokens[msg.sender] += nasicReward;
+
+        emit DonationMade(msg.sender, token, amount, nasicReward);
+    }
+
+    function withdrawFunds(address token, uint256 amount) external {
         DepositInfo storage userInfo = userDeposits[msg.sender][token];
         require(userInfo.amount >= amount, "Insufficient balance");
         require(block.timestamp >= userInfo.timestamp + 7 * 24 * 3600, "Withdrawal locked for 7 days");
 
         userInfo.amount -= amount;
 
-        emit WithdrawalRequested(msg.sender, token, amount);
-    }
-
-    function completeWithdrawal(address token, uint256 amount) external {
-        DepositInfo storage userInfo = userDeposits[msg.sender][token];
         uint256 timeHeld = block.timestamp - userInfo.timestamp;
         uint256 extraTokens = (timeHeld * NASICOIN_RATE * amount) / 1e18;
 
@@ -127,6 +140,18 @@ contract VaultManager is Ownable {
         IERC20(token).transfer(msg.sender, amount);
 
         emit WithdrawalCompleted(msg.sender, token, amount, extraTokens);
+    }
+
+    function mintTokensBeforeDraw() external onlyOwner {
+        uint256 totalMinted = 0;
+        for (address account = address(0); account != address(0); account = address(uint160(account) + 1)) {
+            uint256 tokens = releasedTokens[account];
+            if (tokens > 0) {
+                releasedTokens[account] = 0;
+                totalMinted += tokens;
+            }
+        }
+        emit TokensMintedBeforeDraw(totalMinted);
     }
 
     function calculateWeeklyProfits() external onlyOwner {
@@ -145,4 +170,5 @@ contract VaultManager is Ownable {
             0  // Placeholder for superPrize remaining
         );
     }
+
 }

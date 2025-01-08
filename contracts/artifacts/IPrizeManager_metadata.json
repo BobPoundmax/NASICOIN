@@ -9,6 +9,24 @@
 				"inputs": [
 					{
 						"internalType": "uint256",
+						"name": "totalInvested",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "weeklyProfit",
+						"type": "uint256"
+					}
+				],
+				"name": "emitWeeklyReport",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
 						"name": "profits",
 						"type": "uint256"
 					},
@@ -73,11 +91,11 @@
 			]
 		},
 		"contracts/VaultManager.sol": {
-			"keccak256": "0x12f13c918dd4b6f9604598391b0f071ceb38409e053f1752121643cc42122f76",
+			"keccak256": "0x5112209bf0d9cdede8db58393d9da89c4bf7c0d51bfabbd054d3780d2feba7b4",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://eb820178a523918bac6954af2770d5fcbe7cc724e5b13b8ae8d2b4c194a32af0",
-				"dweb:/ipfs/QmaK78vFwWECe2LevjcH6jY2yJ9zyHfX3gKJPwW3Fu7uF8"
+				"bzz-raw://8b34cb027128cd0acc6d42ef8052f5fc62ffcc8456e5f085d18e788960d555be",
+				"dweb:/ipfs/Qma9vx4c6jFYXphoCF9yHkHgLNbSVFUCnb6nMwkTA8owcL"
 			]
 		}
 	},

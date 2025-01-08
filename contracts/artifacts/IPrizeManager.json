@@ -49,10 +49,29 @@
 		},
 		"gasEstimates": null,
 		"methodIdentifiers": {
+			"emitWeeklyReport(uint256,uint256)": "fd494d3f",
 			"updateWeeklyProfits(uint256,uint256,uint256)": "a975b892"
 		}
 	},
 	"abi": [
+		{
+			"inputs": [
+				{
+					"internalType": "uint256",
+					"name": "totalInvested",
+					"type": "uint256"
+				},
+				{
+					"internalType": "uint256",
+					"name": "weeklyProfit",
+					"type": "uint256"
+				}
+			],
+			"name": "emitWeeklyReport",
+			"outputs": [],
+			"stateMutability": "nonpayable",
+			"type": "function"
+		},
 		{
 			"inputs": [
 				{
