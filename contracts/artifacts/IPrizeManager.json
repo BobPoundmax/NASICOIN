@@ -49,61 +49,31 @@
 		},
 		"gasEstimates": null,
 		"methodIdentifiers": {
-			"balanceOf(address)": "70a08231",
-			"deposit(uint256)": "b6b55f25",
-			"getProfit(address)": "c600e1dc"
+			"updateWeeklyProfits(uint256,uint256,uint256)": "a975b892"
 		}
 	},
 	"abi": [
 		{
 			"inputs": [
 				{
-					"internalType": "address",
-					"name": "account",
-					"type": "address"
-				}
-			],
-			"name": "balanceOf",
-			"outputs": [
+					"internalType": "uint256",
+					"name": "profits",
+					"type": "uint256"
+				},
 				{
 					"internalType": "uint256",
-					"name": "",
+					"name": "totalInvested",
+					"type": "uint256"
+				},
+				{
+					"internalType": "uint256",
+					"name": "reinvested",
 					"type": "uint256"
 				}
 			],
-			"stateMutability": "view",
-			"type": "function"
-		},
-		{
-			"inputs": [
-				{
-					"internalType": "uint256",
-					"name": "amount",
-					"type": "uint256"
-				}
-			],
-			"name": "deposit",
+			"name": "updateWeeklyProfits",
 			"outputs": [],
 			"stateMutability": "nonpayable",
-			"type": "function"
-		},
-		{
-			"inputs": [
-				{
-					"internalType": "address",
-					"name": "account",
-					"type": "address"
-				}
-			],
-			"name": "getProfit",
-			"outputs": [
-				{
-					"internalType": "uint256",
-					"name": "",
-					"type": "uint256"
-				}
-			],
-			"stateMutability": "view",
 			"type": "function"
 		}
 	]

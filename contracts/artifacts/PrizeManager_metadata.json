@@ -153,19 +153,6 @@
 			},
 			{
 				"inputs": [],
-				"name": "checkPrizePoolDistribution",
-				"outputs": [
-					{
-						"internalType": "bool",
-						"name": "",
-						"type": "bool"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [],
 				"name": "developerDividend",
 				"outputs": [
 					{
@@ -201,13 +188,6 @@
 					}
 				],
 				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "generateWinners",
-				"outputs": [],
-				"stateMutability": "nonpayable",
 				"type": "function"
 			},
 			{
@@ -333,19 +313,6 @@
 				"outputs": [],
 				"stateMutability": "nonpayable",
 				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "uint256",
-						"name": "newScale",
-						"type": "uint256"
-					}
-				],
-				"name": "updatePrizeScale",
-				"outputs": [],
-				"stateMutability": "nonpayable",
-				"type": "function"
 			}
 		],
 		"devdoc": {
@@ -364,16 +331,10 @@
 			},
 			"kind": "dev",
 			"methods": {
-				"checkPrizePoolDistribution()": {
-					"details": "This function prepares for distribution but does not execute it."
-				},
 				"constructor": {
 					"params": {
 						"initialOwner": "Address of the initial owner."
 					}
-				},
-				"generateWinners()": {
-					"details": "This function will later be connected to a Chainlink oracle for randomness."
 				},
 				"owner()": {
 					"details": "Returns the address of the current owner."
@@ -388,11 +349,6 @@
 					"params": {
 						"profits": "Total profits accumulated over the week."
 					}
-				},
-				"updatePrizeScale(uint256)": {
-					"params": {
-						"newScale": "The new prize scale value."
-					}
 				}
 			},
 			"title": "PrizeManager",
@@ -401,20 +357,11 @@
 		"userdoc": {
 			"kind": "user",
 			"methods": {
-				"checkPrizePoolDistribution()": {
-					"notice": "Checks if there are sufficient funds in prize pools for distribution."
-				},
 				"constructor": {
 					"notice": "Constructor to initialize the contract with an initial owner."
 				},
-				"generateWinners()": {
-					"notice": "Generates winners for each prize pool."
-				},
 				"updatePrizePools(uint256)": {
 					"notice": "Updates the prize pools and dividends based on weekly profits."
-				},
-				"updatePrizeScale(uint256)": {
-					"notice": "Allows owner or developer to update the prize scale once per week."
 				}
 			},
 			"version": 1
@@ -453,11 +400,11 @@
 			]
 		},
 		"contracts/PrizeManager.sol": {
-			"keccak256": "0x609c7575996a4f69f5a155def795e35311c0ad90ea0e5391025ef96f1c5e1b02",
+			"keccak256": "0xf33a316c777232939d5cc1b9676799937f80477ba871fbc96abb27dd92c058c0",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://1d4b239cde81a9bc1d8fb2a67b594194668501ef2ab96928f89c2c33417ad6ad",
-				"dweb:/ipfs/QmQN95cEBsgiMddJGpjkSv2AwZnToLUsvsc75uJoknBZzV"
+				"bzz-raw://7e352520655f8f08c194b5da7d9566ca4ca04d8c71477072734b04e6aa729981",
+				"dweb:/ipfs/Qmc2ShNMwSVs8es3bJ6hq1cR2mwV75dgFQx8kZkgs6fbe3"
 			]
 		}
 	},

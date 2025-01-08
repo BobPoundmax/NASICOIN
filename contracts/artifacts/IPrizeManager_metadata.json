@@ -8,52 +8,24 @@
 			{
 				"inputs": [
 					{
-						"internalType": "address",
-						"name": "account",
-						"type": "address"
-					}
-				],
-				"name": "balanceOf",
-				"outputs": [
+						"internalType": "uint256",
+						"name": "profits",
+						"type": "uint256"
+					},
 					{
 						"internalType": "uint256",
-						"name": "",
+						"name": "totalInvested",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "reinvested",
 						"type": "uint256"
 					}
 				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "uint256",
-						"name": "amount",
-						"type": "uint256"
-					}
-				],
-				"name": "deposit",
+				"name": "updateWeeklyProfits",
 				"outputs": [],
 				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "address",
-						"name": "account",
-						"type": "address"
-					}
-				],
-				"name": "getProfit",
-				"outputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"stateMutability": "view",
 				"type": "function"
 			}
 		],
@@ -70,7 +42,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"contracts/VaultManager.sol": "IVault"
+			"contracts/VaultManager.sol": "IPrizeManager"
 		},
 		"evmVersion": "cancun",
 		"libraries": {},
