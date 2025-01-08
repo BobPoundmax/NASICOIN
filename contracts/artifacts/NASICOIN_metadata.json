@@ -817,11 +817,11 @@
 			]
 		},
 		"contracts/NASICOIN.sol": {
-			"keccak256": "0xe2909e9ecdd3874ac42c44eabbeefa064480f3fca9ea683d1573fa7fbd42c649",
+			"keccak256": "0x66cd01bbfae920ed8e1680da62f67c717dcb1639c57c0b473440f2a60c27bc15",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://f18ebd41ebca3350a2b9b99fe26eefae2b6703bb3b9eeec3ed50bb33ae4b4226",
-				"dweb:/ipfs/Qmdo5jxybbz4qspzfwYuFARVnTm9gvQg7dypEXLxXRj89z"
+				"bzz-raw://0928fe120ba56f8e0ffaee69d4fefba69905364673970e1f0a321a0d1d35d7af",
+				"dweb:/ipfs/QmYEHC1StFFVaMsqx5BaTx2sbkDSm1JsKV96Lc4bzeXC1m"
 			]
 		}
 	},

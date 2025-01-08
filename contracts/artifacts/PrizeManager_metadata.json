@@ -152,6 +152,49 @@
 				"type": "event"
 			},
 			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "totalInvested",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "weeklyProfit",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "lowPrizeRemaining",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "middlePrizeRemaining",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "highPrizeRemaining",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "superPrizeRemaining",
+						"type": "uint256"
+					}
+				],
+				"name": "WeeklyReport",
+				"type": "event"
+			},
+			{
 				"inputs": [],
 				"name": "developerDividend",
 				"outputs": [
@@ -188,6 +231,24 @@
 					}
 				],
 				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "totalInvested",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "weeklyProfit",
+						"type": "uint256"
+					}
+				],
+				"name": "emitWeeklyReport",
+				"outputs": [],
+				"stateMutability": "nonpayable",
 				"type": "function"
 			},
 			{
@@ -400,11 +461,11 @@
 			]
 		},
 		"contracts/PrizeManager.sol": {
-			"keccak256": "0xf33a316c777232939d5cc1b9676799937f80477ba871fbc96abb27dd92c058c0",
+			"keccak256": "0x45a95dcf1a5404db81c5b431aee66bf31fed59280c943c928f142d8d57c8c353",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://7e352520655f8f08c194b5da7d9566ca4ca04d8c71477072734b04e6aa729981",
-				"dweb:/ipfs/Qmc2ShNMwSVs8es3bJ6hq1cR2mwV75dgFQx8kZkgs6fbe3"
+				"bzz-raw://45ab4997f5bca584526ebb9eb2655dd952c9ca3c9813aefacf520fb13c85dde8",
+				"dweb:/ipfs/QmScoJ1nZymVvfjRQdDNBaJU2FYLJ9Ev6f87vjhgZcrsey"
 			]
 		}
 	},

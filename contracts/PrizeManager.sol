@@ -32,6 +32,14 @@ contract PrizeManager is Ownable {
     event DividendsUpdated(uint256 ownerDividend, uint256 developerDividend);
     event PrizeScaleUpdated(uint256 newPrizeScale);
     event PrizesDistributed(uint256 superPrizeWinners, uint256 highPrizeWinners, uint256 middlePrizeWinners, uint256 lowPrizeWinners);
+    event WeeklyReport(
+        uint256 totalInvested,
+        uint256 weeklyProfit,
+        uint256 lowPrizeRemaining,
+        uint256 middlePrizeRemaining,
+        uint256 highPrizeRemaining,
+        uint256 superPrizeRemaining
+    );
 
     /**
      * @notice Constructor to initialize the contract with an initial owner.
@@ -63,5 +71,14 @@ contract PrizeManager is Ownable {
         emit DividendsUpdated(ownerDividend, developerDividend);
     }
 
-    // Prize distribution functions remain unchanged...
+    function emitWeeklyReport(uint256 totalInvested, uint256 weeklyProfit) external onlyOwner {
+        emit WeeklyReport(
+            totalInvested,
+            weeklyProfit,
+            lowPrize,
+            middlePrize,
+            highPrize,
+            superPrize
+        );
+    }
 }
