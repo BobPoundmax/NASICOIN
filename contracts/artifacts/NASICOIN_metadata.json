@@ -358,6 +358,20 @@
 			},
 			{
 				"inputs": [],
+				"name": "cancelDeveloperChange",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "cancelOwnerChange",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
 				"name": "decimals",
 				"outputs": [
 					{
@@ -393,6 +407,20 @@
 					}
 				],
 				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "finalizeDeveloperChange",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "finalizeOwnerChange",
+				"outputs": [],
+				"stateMutability": "nonpayable",
 				"type": "function"
 			},
 			{
@@ -481,6 +509,32 @@
 			{
 				"inputs": [],
 				"name": "renounceOwnership",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_newDeveloper",
+						"type": "address"
+					}
+				],
+				"name": "requestDeveloperChange",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_newOwner",
+						"type": "address"
+					}
+				],
+				"name": "requestOwnerChange",
 				"outputs": [],
 				"stateMutability": "nonpayable",
 				"type": "function"
@@ -709,6 +763,16 @@
 				"renounceOwnership()": {
 					"details": "Leaves the contract without owner. It will not be possible to call `onlyOwner` functions. Can only be called by the current owner. NOTE: Renouncing ownership will leave the contract without an owner, thereby disabling any functionality that is only available to the owner."
 				},
+				"requestDeveloperChange(address)": {
+					"params": {
+						"_newDeveloper": "Address of the new developer."
+					}
+				},
+				"requestOwnerChange(address)": {
+					"params": {
+						"_newOwner": "Address of the new owner."
+					}
+				},
 				"setVaultManager(address)": {
 					"params": {
 						"_vaultManager": "The address of the VaultManager contract."
@@ -736,14 +800,32 @@
 		"userdoc": {
 			"kind": "user",
 			"methods": {
+				"cancelDeveloperChange()": {
+					"notice": "Cancel the developer change request."
+				},
+				"cancelOwnerChange()": {
+					"notice": "Cancel the owner change request."
+				},
 				"constructor": {
 					"notice": "Constructor to deploy the NASICOIN token."
 				},
 				"decimals()": {
 					"notice": "Override the decimals function to return 18, standard for ERC20 tokens.         The smallest fractional unit of NASICOIN is called \"FISH\"."
 				},
+				"finalizeDeveloperChange()": {
+					"notice": "Finalize the developer change after the delay period."
+				},
+				"finalizeOwnerChange()": {
+					"notice": "Finalize the owner change after the delay period."
+				},
 				"mint(address,uint256)": {
 					"notice": "Mint new tokens. Can only be called by the VaultManager contract."
+				},
+				"requestDeveloperChange(address)": {
+					"notice": "Request to change the developer."
+				},
+				"requestOwnerChange(address)": {
+					"notice": "Request to change the owner."
 				},
 				"setVaultManager(address)": {
 					"notice": "Set the address of the VaultManager contract."
@@ -785,11 +867,11 @@
 			]
 		},
 		"@openzeppelin/contracts/token/ERC20/ERC20.sol": {
-			"keccak256": "0xbf61ab2ae1d575a17ea58fbb99ca232baddcc4e0eeea180e84cbc74b0c348b31",
+			"keccak256": "0x6ef9389a2c07bc40d8a7ba48914724ab2c108fac391ce12314f01321813e6368",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://4e0968705bad99747a8e5288aa008678c2be2f471f919dce3925a3cc4f1dee09",
-				"dweb:/ipfs/QmbAFnCQfo4tw6ssfQSjhA5LzwHWNNryXN8bX7ty8jiqqn"
+				"bzz-raw://b7a5cb39b1e6df68f4dd9a5e76e853d745a74ffb3dfd7df4ae4d2ace6992a171",
+				"dweb:/ipfs/QmPbzKR19rdM8X3PLQjsmHRepUKhvoZnedSR63XyGtXZib"
 			]
 		},
 		"@openzeppelin/contracts/token/ERC20/IERC20.sol": {
@@ -817,11 +899,11 @@
 			]
 		},
 		"contracts/NASICOIN.sol": {
-			"keccak256": "0x66cd01bbfae920ed8e1680da62f67c717dcb1639c57c0b473440f2a60c27bc15",
+			"keccak256": "0xaf42747aa785d3a937f746740a20ee84e7d2d6a092d81a3dd9a448e6f39cb247",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://0928fe120ba56f8e0ffaee69d4fefba69905364673970e1f0a321a0d1d35d7af",
-				"dweb:/ipfs/QmYEHC1StFFVaMsqx5BaTx2sbkDSm1JsKV96Lc4bzeXC1m"
+				"bzz-raw://4318f2f7361280ac00b2e86a771873bb1e1ab7455fe42c566de28fac5d22a5ec",
+				"dweb:/ipfs/QmcNioXqmei5wssdJhX49cFjazXLUmmXo5oiBvm9maEEJt"
 			]
 		}
 	},
