@@ -15,7 +15,10 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 contract NASICOIN is ERC20, Ownable {
     // Constants
     uint256 public constant INITIAL_SUPPLY = 2 * 10**18; // 2 NASIC with 18 decimals
-
+    // Tracks 
+    mapping(address => bool) private hasBalance; // Tracks addresses that currently have a balance
+    mapping(address => uint256) private userBalances; // Tracks the balances of each user
+    address[] private users; // List of all users with non-zero balances
     // State variables
     address public developer; // Address of the developer
     address public vaultManager; // Address of the VaultManager contract
@@ -62,6 +65,59 @@ contract NASICOIN is ERC20, Ownable {
         _;
     }
 
+// Override the _mint function to track user balances
+    function _mint(address account, uint256 amount) internal override {
+        super._mint(account, amount);
+        _trackUserBalance(account, balanceOf(account));
+    }
+
+    // Override the _transfer function to track user balances and users
+    function _transfer(
+        address sender,
+        address recipient,
+        uint256 amount
+    ) internal override {
+        super._transfer(sender, recipient, amount);
+
+        // Update the sender's balance tracking
+        _trackUserBalance(sender, balanceOf(sender));
+
+        // Update the recipient's balance tracking
+        _trackUserBalance(recipient, balanceOf(recipient));
+    }
+
+    // Internal function to update the user balance and manage the users array
+    function _trackUserBalance(address user, uint256 balance) internal {
+        if (balance > 0 && !hasBalance[user]) {
+            hasBalance[user] = true;
+            users.push(user);
+        } else if (balance == 0 && hasBalance[user]) {
+            hasBalance[user] = false;
+            _removeUser(user);
+        }
+        userBalances[user] = balance;
+    }
+
+    // Internal function to remove a user from the users array
+    function _removeUser(address user) internal {
+        for (uint256 i = 0; i < users.length; i++) {
+            if (users[i] == user) {
+                users[i] = users[users.length - 1]; // Replace with the last user
+                users.pop(); // Remove the last user
+                break;
+            }
+        }
+    }
+
+    // Get the list of all users with non-zero balances
+    function getUsers() external view returns (address[] memory) {
+        return users;
+    }
+
+    // Get the balance of a specific user
+    function getUserBalance(address user) external view returns (uint256) {
+        return userBalances[user];
+    }
     /**
      * @notice Set the address of the VaultManager contract.
      * @param _vaultManager The address of the VaultManager contract.
