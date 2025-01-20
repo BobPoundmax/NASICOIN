@@ -9,17 +9,6 @@
 				"inputs": [
 					{
 						"internalType": "address",
-						"name": "initialOwner",
-						"type": "address"
-					}
-				],
-				"stateMutability": "nonpayable",
-				"type": "constructor"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "address",
 						"name": "spender",
 						"type": "address"
 					},
@@ -103,28 +92,6 @@
 				"type": "error"
 			},
 			{
-				"inputs": [
-					{
-						"internalType": "address",
-						"name": "owner",
-						"type": "address"
-					}
-				],
-				"name": "OwnableInvalidOwner",
-				"type": "error"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "address",
-						"name": "account",
-						"type": "address"
-					}
-				],
-				"name": "OwnableUnauthorizedAccount",
-				"type": "error"
-			},
-			{
 				"anonymous": false,
 				"inputs": [
 					{
@@ -155,108 +122,6 @@
 					{
 						"indexed": true,
 						"internalType": "address",
-						"name": "currentDeveloper",
-						"type": "address"
-					}
-				],
-				"name": "DeveloperChangeCanceled",
-				"type": "event"
-			},
-			{
-				"anonymous": false,
-				"inputs": [
-					{
-						"indexed": true,
-						"internalType": "address",
-						"name": "requester",
-						"type": "address"
-					},
-					{
-						"indexed": true,
-						"internalType": "address",
-						"name": "newDeveloper",
-						"type": "address"
-					}
-				],
-				"name": "DeveloperChangeRequested",
-				"type": "event"
-			},
-			{
-				"anonymous": false,
-				"inputs": [
-					{
-						"indexed": true,
-						"internalType": "address",
-						"name": "oldDeveloper",
-						"type": "address"
-					},
-					{
-						"indexed": true,
-						"internalType": "address",
-						"name": "newDeveloper",
-						"type": "address"
-					}
-				],
-				"name": "DeveloperChanged",
-				"type": "event"
-			},
-			{
-				"anonymous": false,
-				"inputs": [
-					{
-						"indexed": true,
-						"internalType": "address",
-						"name": "currentOwner",
-						"type": "address"
-					}
-				],
-				"name": "OwnerChangeCanceled",
-				"type": "event"
-			},
-			{
-				"anonymous": false,
-				"inputs": [
-					{
-						"indexed": true,
-						"internalType": "address",
-						"name": "requester",
-						"type": "address"
-					},
-					{
-						"indexed": true,
-						"internalType": "address",
-						"name": "newOwner",
-						"type": "address"
-					}
-				],
-				"name": "OwnerChangeRequested",
-				"type": "event"
-			},
-			{
-				"anonymous": false,
-				"inputs": [
-					{
-						"indexed": true,
-						"internalType": "address",
-						"name": "previousOwner",
-						"type": "address"
-					},
-					{
-						"indexed": true,
-						"internalType": "address",
-						"name": "newOwner",
-						"type": "address"
-					}
-				],
-				"name": "OwnershipTransferred",
-				"type": "event"
-			},
-			{
-				"anonymous": false,
-				"inputs": [
-					{
-						"indexed": true,
-						"internalType": "address",
 						"name": "from",
 						"type": "address"
 					},
@@ -275,19 +140,6 @@
 				],
 				"name": "Transfer",
 				"type": "event"
-			},
-			{
-				"inputs": [],
-				"name": "INITIAL_SUPPLY",
-				"outputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
 			},
 			{
 				"inputs": [
@@ -358,20 +210,6 @@
 			},
 			{
 				"inputs": [],
-				"name": "cancelDeveloperChange",
-				"outputs": [],
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "cancelOwnerChange",
-				"outputs": [],
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"inputs": [],
 				"name": "decimals",
 				"outputs": [
 					{
@@ -385,96 +223,6 @@
 			},
 			{
 				"inputs": [],
-				"name": "developer",
-				"outputs": [
-					{
-						"internalType": "address",
-						"name": "",
-						"type": "address"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "developerChangeRequestTime",
-				"outputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "finalizeDeveloperChange",
-				"outputs": [],
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "finalizeOwnerChange",
-				"outputs": [],
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "address",
-						"name": "user",
-						"type": "address"
-					}
-				],
-				"name": "getUserBalance",
-				"outputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "getUsers",
-				"outputs": [
-					{
-						"internalType": "address[]",
-						"name": "",
-						"type": "address[]"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "address",
-						"name": "to",
-						"type": "address"
-					},
-					{
-						"internalType": "uint256",
-						"name": "amount",
-						"type": "uint256"
-					}
-				],
-				"name": "mint",
-				"outputs": [],
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"inputs": [],
 				"name": "name",
 				"outputs": [
 					{
@@ -484,104 +232,6 @@
 					}
 				],
 				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "owner",
-				"outputs": [
-					{
-						"internalType": "address",
-						"name": "",
-						"type": "address"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "ownerChangeRequestTime",
-				"outputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "pendingNewDeveloper",
-				"outputs": [
-					{
-						"internalType": "address",
-						"name": "",
-						"type": "address"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "pendingNewOwner",
-				"outputs": [
-					{
-						"internalType": "address",
-						"name": "",
-						"type": "address"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "renounceOwnership",
-				"outputs": [],
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "address",
-						"name": "_newDeveloper",
-						"type": "address"
-					}
-				],
-				"name": "requestDeveloperChange",
-				"outputs": [],
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "address",
-						"name": "_newOwner",
-						"type": "address"
-					}
-				],
-				"name": "requestOwnerChange",
-				"outputs": [],
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "address",
-						"name": "_vaultManager",
-						"type": "address"
-					}
-				],
-				"name": "setVaultManager",
-				"outputs": [],
-				"stateMutability": "nonpayable",
 				"type": "function"
 			},
 			{
@@ -662,36 +312,10 @@
 				],
 				"stateMutability": "nonpayable",
 				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "address",
-						"name": "newOwner",
-						"type": "address"
-					}
-				],
-				"name": "transferOwnership",
-				"outputs": [],
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "vaultManager",
-				"outputs": [
-					{
-						"internalType": "address",
-						"name": "",
-						"type": "address"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
 			}
 		],
 		"devdoc": {
-			"details": "NASICOIN is a token created to support the owner of a cat named NASIC.       It has unique functionalities such as staking, donations, and weekly lottery-based prize distributions.      The fractional unit of NASICOIN is called \"FISH\".",
+			"details": "Implementation of the {IERC20} interface. This implementation is agnostic to the way tokens are created. This means that a supply mechanism has to be added in a derived contract using {_mint}. TIP: For a detailed writeup see our guide https://forum.openzeppelin.com/t/how-to-implement-erc20-supply-mechanisms/226[How to implement supply mechanisms]. The default value of {decimals} is 18. To change this, you should override this function so it returns a different value. We have followed general OpenZeppelin Contracts guidelines: functions revert instead returning `false` on failure. This behavior is nonetheless conventional and does not conflict with the expectations of ERC-20 applications.",
 			"errors": {
 				"ERC20InsufficientAllowance(address,uint256,uint256)": [
 					{
@@ -744,16 +368,6 @@
 							"spender": "Address that may be allowed to operate on tokens without being their owner."
 						}
 					}
-				],
-				"OwnableInvalidOwner(address)": [
-					{
-						"details": "The owner is not a valid owner account. (eg. `address(0)`)"
-					}
-				],
-				"OwnableUnauthorizedAccount(address)": [
-					{
-						"details": "The caller account is not authorized to perform an operation."
-					}
 				]
 			},
 			"events": {
@@ -776,39 +390,13 @@
 					"details": "See {IERC20-balanceOf}."
 				},
 				"constructor": {
-					"params": {
-						"initialOwner": "The initial owner of the contract (passed to the Ownable constructor)."
-					}
+					"details": "Sets the values for {name} and {symbol}. All two of these values are immutable: they can only be set once during construction."
 				},
-				"mint(address,uint256)": {
-					"params": {
-						"amount": "The amount of tokens to mint.",
-						"to": "The address to receive the newly minted tokens."
-					}
+				"decimals()": {
+					"details": "Returns the number of decimals used to get its user representation. For example, if `decimals` equals `2`, a balance of `505` tokens should be displayed to a user as `5.05` (`505 / 10 ** 2`). Tokens usually opt for a value of 18, imitating the relationship between Ether and Wei. This is the default value returned by this function, unless it's overridden. NOTE: This information is only used for _display_ purposes: it in no way affects any of the arithmetic of the contract, including {IERC20-balanceOf} and {IERC20-transfer}."
 				},
 				"name()": {
 					"details": "Returns the name of the token."
-				},
-				"owner()": {
-					"details": "Returns the address of the current owner."
-				},
-				"renounceOwnership()": {
-					"details": "Leaves the contract without owner. It will not be possible to call `onlyOwner` functions. Can only be called by the current owner. NOTE: Renouncing ownership will leave the contract without an owner, thereby disabling any functionality that is only available to the owner."
-				},
-				"requestDeveloperChange(address)": {
-					"params": {
-						"_newDeveloper": "Address of the new developer."
-					}
-				},
-				"requestOwnerChange(address)": {
-					"params": {
-						"_newOwner": "Address of the new owner."
-					}
-				},
-				"setVaultManager(address)": {
-					"params": {
-						"_vaultManager": "The address of the VaultManager contract."
-					}
 				},
 				"symbol()": {
 					"details": "Returns the symbol of the token, usually a shorter version of the name."
@@ -821,54 +409,19 @@
 				},
 				"transferFrom(address,address,uint256)": {
 					"details": "See {IERC20-transferFrom}. Skips emitting an {Approval} event indicating an allowance update. This is not required by the ERC. See {xref-ERC20-_approve-address-address-uint256-bool-}[_approve]. NOTE: Does not update the allowance if the current allowance is the maximum `uint256`. Requirements: - `from` and `to` cannot be the zero address. - `from` must have a balance of at least `value`. - the caller must have allowance for ``from``'s tokens of at least `value`."
-				},
-				"transferOwnership(address)": {
-					"details": "Transfers ownership of the contract to a new account (`newOwner`). Can only be called by the current owner."
 				}
 			},
-			"title": "NASICOIN (NASIC)",
 			"version": 1
 		},
 		"userdoc": {
 			"kind": "user",
-			"methods": {
-				"cancelDeveloperChange()": {
-					"notice": "Cancel the developer change request."
-				},
-				"cancelOwnerChange()": {
-					"notice": "Cancel the owner change request."
-				},
-				"constructor": {
-					"notice": "Constructor to deploy the NASICOIN token."
-				},
-				"decimals()": {
-					"notice": "Override the decimals function to return 18, standard for ERC20 tokens.         The smallest fractional unit of NASICOIN is called \"FISH\"."
-				},
-				"finalizeDeveloperChange()": {
-					"notice": "Finalize the developer change after the delay period."
-				},
-				"finalizeOwnerChange()": {
-					"notice": "Finalize the owner change after the delay period."
-				},
-				"mint(address,uint256)": {
-					"notice": "Mint new tokens. Can only be called by the VaultManager contract."
-				},
-				"requestDeveloperChange(address)": {
-					"notice": "Request to change the developer."
-				},
-				"requestOwnerChange(address)": {
-					"notice": "Request to change the owner."
-				},
-				"setVaultManager(address)": {
-					"notice": "Set the address of the VaultManager contract."
-				}
-			},
+			"methods": {},
 			"version": 1
 		}
 	},
 	"settings": {
 		"compilationTarget": {
-			"contracts/NASICOIN.sol": "NASICOIN"
+			".deps/npm/@openzeppelin/contracts/token/ERC20/ERC20.sol": "ERC20"
 		},
 		"evmVersion": "cancun",
 		"libraries": {},
@@ -882,15 +435,7 @@
 		"remappings": []
 	},
 	"sources": {
-		"@openzeppelin/contracts/access/Ownable.sol": {
-			"keccak256": "0xff6d0bb2e285473e5311d9d3caacb525ae3538a80758c10649a4d61029b017bb",
-			"license": "MIT",
-			"urls": [
-				"bzz-raw://8ed324d3920bb545059d66ab97d43e43ee85fd3bd52e03e401f020afb0b120f6",
-				"dweb:/ipfs/QmfEckWLmZkDDcoWrkEvMWhms66xwTLff9DDhegYpvHo1a"
-			]
-		},
-		"@openzeppelin/contracts/interfaces/draft-IERC6093.sol": {
+		".deps/npm/@openzeppelin/contracts/interfaces/draft-IERC6093.sol": {
 			"keccak256": "0x880da465c203cec76b10d72dbd87c80f387df4102274f23eea1f9c9b0918792b",
 			"license": "MIT",
 			"urls": [
@@ -898,7 +443,7 @@
 				"dweb:/ipfs/QmbPZzgtT6LEm9CMqWfagQFwETbV1ztpECBB1DtQHrKiRz"
 			]
 		},
-		"@openzeppelin/contracts/token/ERC20/ERC20.sol": {
+		".deps/npm/@openzeppelin/contracts/token/ERC20/ERC20.sol": {
 			"keccak256": "0xf50537f86409cf4c2f0a0f95de8ab9b6bcdddf060ebac951b848b96d41e911d4",
 			"license": "MIT",
 			"urls": [
@@ -906,7 +451,7 @@
 				"dweb:/ipfs/QmXjHGg5CstsLqYNZeBU2PHCjHAqFvTFigJnP7YAmqDM7U"
 			]
 		},
-		"@openzeppelin/contracts/token/ERC20/IERC20.sol": {
+		".deps/npm/@openzeppelin/contracts/token/ERC20/IERC20.sol": {
 			"keccak256": "0xe06a3f08a987af6ad2e1c1e774405d4fe08f1694b67517438b467cecf0da0ef7",
 			"license": "MIT",
 			"urls": [
@@ -914,7 +459,7 @@
 				"dweb:/ipfs/QmeTTxZ7qVk9rjEv2R4CpCwdf8UMCcRqDNMvzNxHc3Fnn9"
 			]
 		},
-		"@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol": {
+		".deps/npm/@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol": {
 			"keccak256": "0x70f2f713b13b7ce4610bcd0ac9fec0f3cc43693b043abcb8dc40a42a726eb330",
 			"license": "MIT",
 			"urls": [
@@ -922,20 +467,12 @@
 				"dweb:/ipfs/QmeN5jKMN2vw5bhacr6tkg78afbTTZUeaacNHqjWt4Ew1r"
 			]
 		},
-		"@openzeppelin/contracts/utils/Context.sol": {
+		".deps/npm/@openzeppelin/contracts/utils/Context.sol": {
 			"keccak256": "0x493033a8d1b176a037b2cc6a04dad01a5c157722049bbecf632ca876224dd4b2",
 			"license": "MIT",
 			"urls": [
 				"bzz-raw://6a708e8a5bdb1011c2c381c9a5cfd8a9a956d7d0a9dc1bd8bcdaf52f76ef2f12",
 				"dweb:/ipfs/Qmax9WHBnVsZP46ZxEMNRQpLQnrdE4dK8LehML1Py8FowF"
-			]
-		},
-		"contracts/NASICOIN.sol": {
-			"keccak256": "0x4107fea269a1d10455a99220e7c5ffc7c9c290b59567d1b14acd56e5981541c5",
-			"license": "MIT",
-			"urls": [
-				"bzz-raw://1fa3f063477ec6e590de851fef210f0d03a298f20f8a756413a8da4ff08632bf",
-				"dweb:/ipfs/QmQ3B1pvhS3mVnMHWMzBgCWYLDjoMibBnkQQiZdiAwcWEr"
 			]
 		}
 	},
